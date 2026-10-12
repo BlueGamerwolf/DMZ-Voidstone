@@ -1,0 +1,18 @@
+
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "dev.voidstone.dmzvoidstone.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "dmz_voidstone.refmap.json",
+  "mixins": [
+    "CreateCharacterC2SAccessor",
+    "TsukisoraCreateCharacterMixin",
+    "UpdateCharacterC2SAccessor",
+    "TsukisoraClassSelectionMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
