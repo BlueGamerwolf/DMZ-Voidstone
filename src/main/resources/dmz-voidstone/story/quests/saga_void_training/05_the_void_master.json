@@ -35,7 +35,7 @@
     {
       "type": "KILL",
       "entity": "dragonminez:saga_buu",
-      "count": 32,
+      "count": 8,
       "health": 14000,
       "meleeDamage": 550,
       "kiDamage": 800,
