@@ -17,7 +17,7 @@ The server-side mixin blocks the normal PURCHASE and UPGRADE packet actions for 
 
 ## Compatibility notes
 
-- The story files use the DragonMineZ 2.1.3 saga/quest JSON schema.
+- The story files use the DragonMineZ 2.1.3 saga/quest JSON schema and supported KILL objectives (not custom wave objective types).
 - Combat numbers are intentionally extreme and need in-game balance testing.
 - Existing world files are never overwritten automatically.
 - `party_scaling: false` disables stat scaling; it does not independently prevent parties from joining. Tsukisora's existing owner restriction is expected to limit who can play the race.
