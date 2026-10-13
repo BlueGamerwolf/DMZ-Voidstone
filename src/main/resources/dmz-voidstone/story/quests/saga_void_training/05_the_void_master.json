@@ -1,0 +1,69 @@
+{
+  "id": 5,
+  "title": "dmz.quest.void_training_5.name",
+  "description": "dmz.quest.void_training_5.desc",
+  "type": "SAGA",
+  "category": "saga_void_training",
+  "parallel_objectives": false,
+  "party_scaling": false,
+  "secret": false,
+  "claim_mode": "TREE_OR_NPC",
+  "prerequisites": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "SAGA_QUEST",
+        "sagaId": "void_training",
+        "questId": 4
+      }
+    ]
+  },
+  "requirements": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "RACE",
+        "race": "tsukisora"
+      },
+      {
+        "type": "CLASS",
+        "class": "void"
+      }
+    ]
+  },
+  "objectives": [
+    {
+      "type": "KILL",
+      "entity": "dragonminez:saga_buu",
+      "count": 8,
+      "health": 14000,
+      "meleeDamage": 550,
+      "kiDamage": 800,
+      "AITier": 4,
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
+    },
+    {
+      "type": "KILL",
+      "entity": "dragonminez:saga_buu",
+      "count": 1,
+      "health": 85000,
+      "meleeDamage": 750,
+      "kiDamage": 1100,
+      "AITier": 4,
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "SKILL",
+      "skill": "kicontrol",
+      "level": 1
+    },
+    {
+      "type": "TPS",
+      "amount": 100000
+    }
+  ]
+}

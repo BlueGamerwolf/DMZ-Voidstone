@@ -1,0 +1,71 @@
+{
+  "id": 3,
+  "title": "dmz.quest.void_ascension_3.name",
+  "description": "dmz.quest.void_ascension_3.desc",
+  "type": "SAGA",
+  "category": "saga_voidstone_ascension",
+  "parallel_objectives": false,
+  "party_scaling": false,
+  "secret": false,
+  "claim_mode": "TREE_OR_NPC",
+  "prerequisites": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "SAGA_QUEST",
+        "sagaId": "voidstone_ascension",
+        "questId": 2
+      }
+    ]
+  },
+  "requirements": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "RACE",
+        "race": "tsukisora"
+      },
+      {
+        "type": "CLASS",
+        "class": "void"
+      }
+    ]
+  },
+  "objectives": [
+    {
+      "type": "KILL",
+      "entity": "dragonminez:saga_frieza",
+      "count": 4,
+      "health": 6000,
+      "meleeDamage": 220,
+      "kiDamage": 340,
+      "AITier": 4,
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
+    },
+    {
+      "type": "KILL",
+      "entity": "dragonminez:saga_frieza",
+      "count": 1,
+      "health": 65000,
+      "meleeDamage": 400,
+      "kiDamage": 650,
+      "AITier": 4,
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "TRANSFORMATION",
+      "formGroup": "voidforms",
+      "formName": "event_horizon",
+      "mastery": 300,
+      "stack": false
+    },
+    {
+      "type": "TPS",
+      "amount": 100000
+    }
+  ]
+}

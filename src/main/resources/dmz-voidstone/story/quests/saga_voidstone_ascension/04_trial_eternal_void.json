@@ -1,0 +1,71 @@
+{
+  "id": 4,
+  "title": "dmz.quest.void_ascension_4.name",
+  "description": "dmz.quest.void_ascension_4.desc",
+  "type": "SAGA",
+  "category": "saga_voidstone_ascension",
+  "parallel_objectives": false,
+  "party_scaling": false,
+  "secret": false,
+  "claim_mode": "TREE_OR_NPC",
+  "prerequisites": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "SAGA_QUEST",
+        "sagaId": "voidstone_ascension",
+        "questId": 3
+      }
+    ]
+  },
+  "requirements": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "RACE",
+        "race": "tsukisora"
+      },
+      {
+        "type": "CLASS",
+        "class": "void"
+      }
+    ]
+  },
+  "objectives": [
+    {
+      "type": "KILL",
+      "entity": "dragonminez:saga_cell",
+      "count": 4,
+      "health": 9000,
+      "meleeDamage": 320,
+      "kiDamage": 500,
+      "AITier": 4,
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
+    },
+    {
+      "type": "KILL",
+      "entity": "dragonminez:saga_cell",
+      "count": 1,
+      "health": 120000,
+      "meleeDamage": 650,
+      "kiDamage": 950,
+      "AITier": 4,
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "TRANSFORMATION",
+      "formGroup": "voidforms",
+      "formName": "eternal_void",
+      "mastery": 400,
+      "stack": false
+    },
+    {
+      "type": "TPS",
+      "amount": 200000
+    }
+  ]
+}

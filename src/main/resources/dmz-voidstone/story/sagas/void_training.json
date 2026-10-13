@@ -1,0 +1,8 @@
+{
+  "id": "void_training",
+  "name": "dmz.saga.void_training",
+  "requirements": {
+    "previousSaga": ""
+  },
+  "questFolder": "saga_void_training"
+}
