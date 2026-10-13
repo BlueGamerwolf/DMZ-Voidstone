@@ -33,15 +33,15 @@
   },
   "objectives": [
     {
-      "type": "SURVIVE_WAVES",
+      "type": "KILL",
       "entity": "dragonminez:saga_frieza",
-      "waves": 7,
-      "count": 4,
+      "count": 28,
       "health": 6000,
       "meleeDamage": 220,
       "kiDamage": 340,
       "AITier": 4,
-      "CanTransform": false
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
     },
     {
       "type": "KILL",
