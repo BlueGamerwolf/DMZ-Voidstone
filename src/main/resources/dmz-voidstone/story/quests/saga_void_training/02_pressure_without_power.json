@@ -33,15 +33,15 @@
   },
   "objectives": [
     {
-      "type": "SURVIVE_WAVES",
+      "type": "KILL",
       "entity": "dragonminez:saga_vegeta",
-      "waves": 6,
-      "count": 3,
+      "count": 18,
       "health": 4200,
       "meleeDamage": 200,
       "kiDamage": 300,
       "AITier": 4,
-      "CanTransform": false
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
     }
   ],
   "rewards": [
