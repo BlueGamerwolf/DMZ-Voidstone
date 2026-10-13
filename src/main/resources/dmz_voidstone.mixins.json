@@ -15,6 +15,12 @@
   "client": [
     "tsukisora.TsukisoraSagaVisibilityMixin"
   ],
+<<<<<<< HEAD
+=======
+  "client": [
+    "TsukisoraSagaVisibilityMixin"
+  ],
+>>>>>>> 1319ab4888d2bc402b837b15ba6610153f7a62fe
   "injectors": {
     "defaultRequire": 1
   }
