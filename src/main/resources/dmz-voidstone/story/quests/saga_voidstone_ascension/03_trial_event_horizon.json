@@ -35,7 +35,7 @@
     {
       "type": "KILL",
       "entity": "dragonminez:saga_frieza",
-      "count": 28,
+      "count": 4,
       "health": 6000,
       "meleeDamage": 220,
       "kiDamage": 340,
