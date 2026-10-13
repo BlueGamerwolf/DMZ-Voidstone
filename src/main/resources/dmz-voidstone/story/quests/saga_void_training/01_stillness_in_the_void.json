@@ -1,0 +1,47 @@
+{
+  "id": 1,
+  "title": "dmz.quest.void_training_1.name",
+  "description": "dmz.quest.void_training_1.desc",
+  "type": "SAGA",
+  "category": "saga_void_training",
+  "parallel_objectives": false,
+  "party_scaling": false,
+  "secret": false,
+  "claim_mode": "TREE_OR_NPC",
+  "prerequisites": {
+    "operator": "AND",
+    "conditions": []
+  },
+  "requirements": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "RACE",
+        "race": "tsukisora"
+      },
+      {
+        "type": "CLASS",
+        "class": "void"
+      }
+    ]
+  },
+  "objectives": [
+    {
+      "type": "SURVIVE_WAVES",
+      "entity": "dragonminez:saga_raditz",
+      "waves": 5,
+      "count": 3,
+      "health": 2200,
+      "meleeDamage": 140,
+      "kiDamage": 180,
+      "AITier": 3,
+      "CanTransform": false
+    }
+  ],
+  "rewards": [
+    {
+      "type": "TPS",
+      "amount": 15000
+    }
+  ]
+}
