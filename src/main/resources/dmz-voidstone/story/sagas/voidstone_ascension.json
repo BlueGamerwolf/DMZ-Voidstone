@@ -2,7 +2,7 @@
   "id": "voidstone_ascension",
   "name": "dmz.saga.voidstone_ascension",
   "requirements": {
-    "previousSaga": ""
+    "previousSaga": "void_training"
   },
   "questFolder": "saga_voidstone_ascension"
 }
