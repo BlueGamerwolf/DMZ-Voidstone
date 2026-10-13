@@ -3,6 +3,7 @@ package dev.voidstone.dmzvoidstone;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
@@ -38,7 +39,7 @@ public final class VoidSagaInstaller {
 
     private VoidSagaInstaller() {}
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {
         MinecraftServer server = event.getServer();
         Path dmzDirectory = server.getWorldPath(LevelResource.ROOT).resolve("dragonminez");
