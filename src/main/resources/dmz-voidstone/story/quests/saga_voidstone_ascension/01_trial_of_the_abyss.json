@@ -29,7 +29,7 @@
     {
       "type": "KILL",
       "entity": "dragonminez:saga_raditz",
-      "count": 5,
+      "count": 3,
       "health": 1800,
       "meleeDamage": 90,
       "kiDamage": 130,
