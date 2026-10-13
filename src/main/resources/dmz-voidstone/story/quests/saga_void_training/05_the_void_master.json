@@ -33,15 +33,15 @@
   },
   "objectives": [
     {
-      "type": "SURVIVE_WAVES",
+      "type": "KILL",
       "entity": "dragonminez:saga_buu",
-      "waves": 8,
-      "count": 4,
+      "count": 32,
       "health": 14000,
       "meleeDamage": 550,
       "kiDamage": 800,
       "AITier": 4,
-      "CanTransform": false
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
     },
     {
       "type": "KILL",
