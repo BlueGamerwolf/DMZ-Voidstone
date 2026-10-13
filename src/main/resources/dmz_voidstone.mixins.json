@@ -1,27 +1,20 @@
 {
-  "required": true,
-  "minVersion": "0.8.5",
-  "package": "dev.voidstone.dmzvoidstone.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "refmap": "dmz_voidstone.refmap.json",
-  "mixins": [
-    "CreateCharacterC2SAccessor",
-    "tsukisora.TsukisoraCreateCharacterMixin",
-    "UpdateCharacterC2SAccessor",
-    "tsukisora.TsukisoraClassSelectionMixin",
-    "UpdateSkillC2SAccessor",
-    "tsukisora.TsukisoraKiControlLockMixin"
-  ],
-  "client": [
-    "tsukisora.TsukisoraSagaVisibilityMixin"
-  ],
-<<<<<<< HEAD
-=======
-  "client": [
-    "TsukisoraSagaVisibilityMixin"
-  ],
->>>>>>> 1319ab4888d2bc402b837b15ba6610153f7a62fe
-  "injectors": {
-    "defaultRequire": 1
-  }
+"required": true,
+"minVersion": "0.8.5",
+"package": "dev.voidstone.dmzvoidstone.mixin",
+"compatibilityLevel": "JAVA_17",
+"mixins": [
+"CreateCharacterC2SAccessor",
+"tsukisora.TsukisoraCreateCharacterMixin",
+"UpdateCharacterC2SAccessor",
+"tsukisora.TsukisoraClassSelectionMixin",
+"UpdateSkillC2SAccessor",
+"tsukisora.TsukisoraKiControlLockMixin"
+],
+"client": [
+"tsukisora.TsukisoraSagaVisibilityMixin"
+],
+"injectors": {
+"defaultRequire": 1
+}
 }
