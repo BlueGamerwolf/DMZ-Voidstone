@@ -10,7 +10,13 @@
   "claim_mode": "TREE_OR_NPC",
   "prerequisites": {
     "operator": "AND",
-    "conditions": []
+    "conditions": [
+      {
+        "type": "SAGA_QUEST",
+        "sagaId": "void_training",
+        "questId": 5
+      }
+    ]
   },
   "requirements": {
     "operator": "AND",

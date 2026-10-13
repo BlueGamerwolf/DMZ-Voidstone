@@ -12,7 +12,9 @@
     "UpdateSkillC2SAccessor",
     "TsukisoraKiControlLockMixin"
   ],
-  "client": [],
+  "client": [
+    "TsukisoraSagaVisibilityMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
