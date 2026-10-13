@@ -27,15 +27,15 @@
   },
   "objectives": [
     {
-      "type": "SURVIVE_WAVES",
+      "type": "KILL",
       "entity": "dragonminez:saga_raditz",
-      "waves": 5,
-      "count": 3,
+      "count": 15,
       "health": 2200,
       "meleeDamage": 140,
       "kiDamage": 180,
       "AITier": 3,
-      "CanTransform": false
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
     }
   ],
   "rewards": [
