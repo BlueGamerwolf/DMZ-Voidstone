@@ -35,7 +35,7 @@
     {
       "type": "KILL",
       "entity": "dragonminez:saga_vegeta",
-      "count": 18,
+      "count": 6,
       "health": 4200,
       "meleeDamage": 200,
       "kiDamage": 300,
