@@ -35,7 +35,7 @@
     {
       "type": "KILL",
       "entity": "dragonminez:saga_cell",
-      "count": 28,
+      "count": 7,
       "health": 9000,
       "meleeDamage": 360,
       "kiDamage": 550,
