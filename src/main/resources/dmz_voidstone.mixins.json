@@ -6,13 +6,15 @@
   "refmap": "dmz_voidstone.refmap.json",
   "mixins": [
     "CreateCharacterC2SAccessor",
-    "TsukisoraCreateCharacterMixin",
+    "tsukisora.TsukisoraCreateCharacterMixin",
     "UpdateCharacterC2SAccessor",
-    "TsukisoraClassSelectionMixin",
+    "tsukisora.TsukisoraClassSelectionMixin",
     "UpdateSkillC2SAccessor",
-    "TsukisoraKiControlLockMixin"
+    "tsukisora.TsukisoraKiControlLockMixin"
   ],
-  "client": [],
+  "client": [
+    "tsukisora.TsukisoraSagaVisibilityMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

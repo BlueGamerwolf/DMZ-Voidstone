@@ -1,4 +1,4 @@
-package dev.voidstone.dmzvoidstone;
+package dev.voidstone.dmzvoidstone.backdoors.tsukisora;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.storage.LevelResource;
@@ -8,6 +8,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
+
+import dev.voidstone.dmzvoidstone.DMZVoidstoneMOD;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,10 +36,10 @@ public final class VoidSagaInstaller {
             "quests/saga_voidstone_ascension/02_trial_ascendant.json",
             "quests/saga_voidstone_ascension/03_trial_event_horizon.json",
             "quests/saga_voidstone_ascension/04_trial_eternal_void.json",
-            "quests/saga_voidstone_ascension/05_trial_voidstone_abyss.json"
-    );
+            "quests/saga_voidstone_ascension/05_trial_voidstone_abyss.json");
 
-    private VoidSagaInstaller() {}
+    private VoidSagaInstaller() {
+    }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {

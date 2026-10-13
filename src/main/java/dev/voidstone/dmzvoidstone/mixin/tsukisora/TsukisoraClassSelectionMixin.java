@@ -1,4 +1,4 @@
-package dev.voidstone.dmzvoidstone.mixin;
+package dev.voidstone.dmzvoidstone.mixin.tsukisora;
 
 import com.dragonminez.common.network.C2S.UpdateCharacterC2S;
 import dev.voidstone.dmzvoidstone.backdoors.tsukisora.TsukisoraAccess;
@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.function.Supplier;
+
+import dev.voidstone.dmzvoidstone.mixin.*;
 
 /**
  * Enforces the owner-only Void class when a character's class is changed.
