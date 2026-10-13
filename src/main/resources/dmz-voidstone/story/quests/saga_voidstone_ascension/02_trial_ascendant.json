@@ -1,0 +1,71 @@
+{
+  "id": 2,
+  "title": "dmz.quest.void_ascension_2.name",
+  "description": "dmz.quest.void_ascension_2.desc",
+  "type": "SAGA",
+  "category": "saga_voidstone_ascension",
+  "parallel_objectives": false,
+  "party_scaling": false,
+  "secret": false,
+  "claim_mode": "TREE_OR_NPC",
+  "prerequisites": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "SAGA_QUEST",
+        "sagaId": "voidstone_ascension",
+        "questId": 1
+      }
+    ]
+  },
+  "requirements": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "RACE",
+        "race": "tsukisora"
+      },
+      {
+        "type": "CLASS",
+        "class": "void"
+      }
+    ]
+  },
+  "objectives": [
+    {
+      "type": "SURVIVE_WAVES",
+      "entity": "dragonminez:saga_vegeta",
+      "waves": 6,
+      "count": 3,
+      "health": 3500,
+      "meleeDamage": 150,
+      "kiDamage": 220,
+      "AITier": 4,
+      "CanTransform": false
+    },
+    {
+      "type": "KILL",
+      "entity": "dragonminez:saga_vegeta",
+      "count": 1,
+      "health": 30000,
+      "meleeDamage": 260,
+      "kiDamage": 390,
+      "AITier": 4,
+      "spawn": "QUEST",
+      "count_mode": "QUEST_SPAWNED_ONLY"
+    }
+  ],
+  "rewards": [
+    {
+      "type": "TRANSFORMATION",
+      "formGroup": "voidforms",
+      "formName": "void_ascendant",
+      "mastery": 100,
+      "stack": false
+    },
+    {
+      "type": "TPS",
+      "amount": 50000
+    }
+  ]
+}
