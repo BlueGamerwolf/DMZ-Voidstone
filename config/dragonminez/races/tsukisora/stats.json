@@ -4,12 +4,12 @@
   "classes": {
     "Void": {
       "baseStats": {
-        "STR": 8,
-        "SKP": 8,
-        "RES": 8,
-        "VIT": 10,
-        "PWR": 10,
-        "ENE": 10
+        "STR": 10,
+        "SKP": 10,
+        "RES": 10,
+        "VIT": 0,
+        "PWR": 0,
+        "ENE": 0
       },
       "statScaling": {
         "STR_scaling": 1.2,
@@ -20,14 +20,14 @@
         "PWR_scaling": 1.4,
         "ENE_scaling": 1.4
       },
-      "baseHp5": 1.5,
-      "hp5VitScaling": 0.06,
+      "baseHp5": 3,
+      "hp5VitScaling": 0.6,
       "baseEp5": 4.0,
       "ep5EneScaling": 0.08,
       "baseSp5": 10.0,
       "sp5StmScaling": 0.1,
-      "tpCostMultiplier": 1.0,
-      "tpGainMultiplier": 1.0,
+      "tpCostMultiplier": 2.0,
+      "tpGainMultiplier": 2.1,
       "passive": {
         "enabled": false,
         "values": {}

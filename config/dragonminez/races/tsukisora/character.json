@@ -1,12 +1,13 @@
+
 {
   "configVersion": "2.1.3",
   "raceName": "tsukisora",
   "hasGender": true,
-  "useVanillaSkin": false,
-  "customModel": "tsukisora",
+  "useVanillaSkin": true,
+  "customModel": "",
   "isLayered": false,
-  "headBones": ["hair"],
-  "racialSkill": "human",
+  "headBones": [],
+  "racialSkill": "saiyan",
   "hasSaiyanTail": false,
   "auraType": "kakarot",
   "defaultModelScaling": [1.0, 1.0, 1.0],
