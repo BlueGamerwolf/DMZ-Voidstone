@@ -1,0 +1,53 @@
+{
+  "id": 2,
+  "title": "dmz.quest.void_training_2.name",
+  "description": "dmz.quest.void_training_2.desc",
+  "type": "SAGA",
+  "category": "saga_void_training",
+  "parallel_objectives": false,
+  "party_scaling": false,
+  "secret": false,
+  "claim_mode": "TREE_OR_NPC",
+  "prerequisites": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "SAGA_QUEST",
+        "sagaId": "void_training",
+        "questId": 1
+      }
+    ]
+  },
+  "requirements": {
+    "operator": "AND",
+    "conditions": [
+      {
+        "type": "RACE",
+        "race": "tsukisora"
+      },
+      {
+        "type": "CLASS",
+        "class": "void"
+      }
+    ]
+  },
+  "objectives": [
+    {
+      "type": "SURVIVE_WAVES",
+      "entity": "dragonminez:saga_vegeta",
+      "waves": 6,
+      "count": 3,
+      "health": 4200,
+      "meleeDamage": 200,
+      "kiDamage": 300,
+      "AITier": 4,
+      "CanTransform": false
+    }
+  ],
+  "rewards": [
+    {
+      "type": "TPS",
+      "amount": 25000
+    }
+  ]
+}
