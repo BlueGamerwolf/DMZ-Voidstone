@@ -9,6 +9,7 @@
     "TsukisoraCreateCharacterMixin",
     "UpdateCharacterC2SAccessor",
     "TsukisoraClassSelectionMixin",
+    "UpdateSkillC2SAccessor",
     "TsukisoraKiControlLockMixin"
   ],
   "client": [],
