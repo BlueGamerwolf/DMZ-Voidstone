@@ -211,7 +211,7 @@ public class DMZVoidstoneMOD {
                             .toLowerCase(java.util.Locale.ROOT).endsWith(".json"))
                     .forEach(path -> {
                         String resourcePath = resourcePrefix + "/"
-                                + root.relativize(path).toString().replace('\\\\', '/');
+                                + root.relativize(path).toString().replace('\\', '/');
                         if (isSupportedResource(resourcePath)) {
                             results.add(resourcePath);
                         }
