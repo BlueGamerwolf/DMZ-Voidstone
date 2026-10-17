@@ -1,6 +1,7 @@
 
 package dev.voidstone.dmzvoidstone;
 
+import com.dragonminez.common.config.ConfigManager;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLPaths;
@@ -33,6 +34,16 @@ public class DMZVoidstoneMOD {
 
     public DMZVoidstoneMOD() {
         installDefaultRaceConfig();
+
+        /*
+         * DragonMineZ initializes ConfigManager from its own @Mod
+         * constructor. Since DragonMineZ is a required dependency, it can
+         * load its race configs before this mod installs Tsukisora's files.
+         * Reload after installation so the custom race and its Void class
+         * are available on a clean first launch, not only after a restart.
+         */
+        LOGGER.info("Reloading DragonMineZ configs after installing Tsukisora defaults.");
+        ConfigManager.reload();
     }
 
     private void installDefaultRaceConfig() {
