@@ -1,8 +1,7 @@
 {
   "configVersion": "2.1.3",
-  "raceName": "tsukisora",
   "classes": {
-    "Void": {
+    "race": {
       "baseStats": {
         "STR": 10,
         "SKP": 10,
@@ -29,7 +28,7 @@
       "tpCostMultiplier": 2.0,
       "tpGainMultiplier": 2.1,
       "passive": {
-        "enabled": false,
+        "enabled": true,
         "values": {}
       }
     }

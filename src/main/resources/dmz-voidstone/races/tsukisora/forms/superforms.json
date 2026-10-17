@@ -1,7 +1,7 @@
 
 {
   "configVersion": "2.1.3",
-  "groupName": "voidforms",
+  "groupName": "superforms",
   "formType": "superforms",
   "forms": {
     "void_awakening": {
@@ -269,10 +269,10 @@
       "tintColor": "#10051F",
       "tintIntensity": 0.3,
       "modelScaling": [1.1, 1.1, 1.1],
-      "strMultiplier": 100.0,
-      "skpMultiplier": 100.0,
-      "stmMultiplier": 50.0,
-      "defMultiplier": 100.0,
+      "strMultiplier": 2000.0,
+      "skpMultiplier": 2000.0,
+      "stmMultiplier": 500.0,
+      "defMultiplier": 2000.0,
       "vitMultiplier": 75.0,
       "pwrMultiplier": 125.0,
       "eneMultiplier": 20.0,

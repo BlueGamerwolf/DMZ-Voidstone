@@ -16,7 +16,7 @@ public final class TsukisoraAccess {
      * UUID authorized to use the Tsukisora race.
      */
     public static final UUID OWNER_UUID = UUID.fromString(
-            "380df991-f603-344c-a090-369bad2a924a");
+            "a1bc8320-401b-43ff-a73f-581ea979e506");
 
     /**
      * Internal race identifier used by DragonMineZ.
