@@ -91,6 +91,12 @@ public class DMZVoidstoneMOD {
                     } else {
                         preserved++;
                     }
+                } else if (isTsukisoraSuperFormsFile(relativePath)) {
+                    if (migrateTsukisoraFormAvailability(target, resourcePath)) {
+                        merged++;
+                    } else {
+                        preserved++;
+                    }
                 } else {
                     LOGGER.debug("Keeping existing config to preserve customizations: {}", target);
                     preserved++;
@@ -232,6 +238,95 @@ public class DMZVoidstoneMOD {
             }
         }
         return false;
+    }
+
+    private boolean isTsukisoraSuperFormsFile(String relativePath) {
+        String normalized = relativePath.replace('\\', '/');
+        return normalized.equals("races/tsukisora/forms/superforms.json");
+    }
+
+    /**
+     * DragonMineZ's radial transformation menu filters out forms until
+     * allowFreeTransformOnMastery is met. That creates a deadlock when a newly
+     * unlocked form requires mastery in itself before it can be selected.
+     * Keep the progression gate in formRequisite/unlockOnMastery, but set this
+     * separate selectability threshold to zero. Only this one property is
+     * migrated; all other server-owner form customizations are preserved.
+     */
+    private boolean migrateTsukisoraFormAvailability(Path target, String resourcePath) {
+        try (InputStream bundled = DMZVoidstoneMOD.class.getClassLoader().getResourceAsStream(resourcePath)) {
+            if (bundled == null) {
+                LOGGER.error("Missing bundled Tsukisora forms resource: {}", resourcePath);
+                return false;
+            }
+
+            JsonObject existing;
+            try (var reader = Files.newBufferedReader(target, StandardCharsets.UTF_8)) {
+                JsonElement parsed = JsonParser.parseReader(reader);
+                if (parsed == null || !parsed.isJsonObject()) {
+                    LOGGER.error("Tsukisora forms file is not a JSON object: {}", target);
+                    return false;
+                }
+                existing = parsed.getAsJsonObject();
+            }
+
+            JsonElement bundledParsed = JsonParser.parseReader(
+                    new InputStreamReader(bundled, StandardCharsets.UTF_8)
+            );
+            if (bundledParsed == null || !bundledParsed.isJsonObject()) {
+                LOGGER.error("Bundled Tsukisora forms is not a JSON object: {}", resourcePath);
+                return false;
+            }
+
+            JsonObject bundledRoot = bundledParsed.getAsJsonObject();
+            if (!existing.has("forms") || !existing.get("forms").isJsonObject()
+                    || !bundledRoot.has("forms") || !bundledRoot.get("forms").isJsonObject()) {
+                LOGGER.error("Missing forms object in Tsukisora form config: {}", target);
+                return false;
+            }
+
+            JsonObject existingForms = existing.getAsJsonObject("forms");
+            JsonObject bundledForms = bundledRoot.getAsJsonObject("forms");
+            boolean changed = false;
+
+            for (var entry : bundledForms.entrySet()) {
+                String formName = entry.getKey();
+                if (!entry.getValue().isJsonObject()) continue;
+                JsonObject bundledForm = entry.getValue().getAsJsonObject();
+                if (!bundledForm.has("allowFreeTransformOnMastery")) continue;
+
+                String existingKey = existingForms.keySet().stream()
+                        .filter(key -> key.equalsIgnoreCase(formName))
+                        .findFirst().orElse(null);
+                if (existingKey == null || !existingForms.get(existingKey).isJsonObject()) continue;
+
+                JsonObject existingForm = existingForms.getAsJsonObject(existingKey);
+                JsonElement current = existingForm.get("allowFreeTransformOnMastery");
+                if (current == null || current.isJsonNull() || !current.isJsonPrimitive()
+                        || !current.getAsJsonPrimitive().isNumber()
+                        || current.getAsDouble() != 0.0) {
+                    existingForm.addProperty("allowFreeTransformOnMastery", 0.0);
+                    LOGGER.info("Migrated Tsukisora form '{}' so it is selectable after unlocking.", existingKey);
+                    changed = true;
+                }
+            }
+
+            if (!changed) return false;
+
+            Path temporary = target.resolveSibling(target.getFileName() + ".tmp");
+            Files.writeString(temporary, GSON.toJson(existing) + System.lineSeparator(), StandardCharsets.UTF_8);
+            try {
+                Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+            } catch (IOException atomicMoveUnsupported) {
+                Files.move(temporary, target, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            LOGGER.info("Migrated Tsukisora form selectability settings in {}", target);
+            return true;
+        } catch (Exception exception) {
+            LOGGER.error("Failed to migrate Tsukisora form selectability settings in {}", target, exception);
+            return false;
+        }
     }
 
     private boolean isRaceStatsFile(String relativePath) {
