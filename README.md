@@ -28,7 +28,7 @@ New files are installed when they do not already exist. Existing files are prese
 
 **Legacy configs:** if an older version added a `Void` entry directly to `config/dragonminez/races/tsukisora/stats.json`, back up and review that file after upgrading. Remove the obsolete race-specific `Void` entry only after confirming the global `config/dragonminez/classes/void.json` exists.
 
-The installer runs at Forge's load-complete lifecycle event and then calls DragonMineZ's `ConfigManager.reload()`. Check `logs/latest.log` for the install summary if a config does not appear.
+The installer runs at Forge's load-complete lifecycle event and then calls DragonMineZ's `ConfigManager.reload()`. For an existing `races/tsukisora/forms/superforms.json`, it migrates only `allowFreeTransformOnMastery` to `0` for bundled Tsukisora forms. DragonMineZ's radial menu otherwise hides a newly unlocked form until that form's own mastery threshold is met, which can make the form impossible to select and therefore impossible to master. The actual progression remains controlled by `formRequisite` and `unlockOnMastery`. Other fields in the existing form config are preserved. Check `logs/latest.log` for the install summary if a config does not appear.
 
 ## Build
 
