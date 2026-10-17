@@ -21,13 +21,9 @@
   "dmz.quest.void_ascension_4.desc": "Tsukisora only. Complete the previous Ascension trial, defeat four Cell-class enemies and then the trial boss to unlock Eternal Void (eternal_void).",
   "dmz.quest.void_ascension_5.name": "Trial of the Voidstone Abyss — Voidstone Abyss",
   "dmz.quest.void_ascension_5.desc": "Tsukisora only. Complete the previous Ascension trial, defeat four Buu-class enemies and then the final Buu to unlock Voidstone Abyss (voidstone_abyss), the final Void manifestation.",
-<<<<<<< HEAD
   "dmz_voidstone.story.ki_control_locked": "Tsukisora must complete the Void Training saga before receiving Ki Control.",
   "race.dragonminez.tsukisora": "Tsukisora",
   "race.dragonminez.tsukisora.description": "Tsukisora is the Goddess of the Void, a mysterious and enigmatic being who embodies the essence of darkness and emptiness. She is known for her ethereal beauty, her flowing silver hair, and her piercing violet eyes that seem to hold the secrets of the universe. Tsukisora is a master of void magic, able to manipulate shadows and create powerful illusions that can disorient and confuse her enemies. Despite her intimidating presence, she is also a compassionate and wise figure, often guiding lost souls through the darkness and helping them find their way. Her connection to the void grants her unparalleled insight into the nature of existence, making her a revered figure among those who seek knowledge and enlightenment.",
   "class.dragonminez.void": "Void",
   "class.dragonminez.void.description": "The Void class is a mysterious and enigmatic class that draws its power from the void, a realm of darkness and emptiness. Void users are able to manipulate shadows and create powerful illusions that can disorient and confuse their enemies. They are also able to tap into the void to enhance their physical abilities, allowing them to move with incredible speed and agility. Void users are often seen as solitary figures, preferring to work alone and relying on their own instincts and intuition to guide them. Despite their aloof nature."
-=======
-  "dmz_voidstone.story.ki_control_locked": "Tsukisora must complete the Void Training saga before receiving Ki Control."
->>>>>>> 1319ab4888d2bc402b837b15ba6610153f7a62fe
 }
