@@ -114,28 +114,16 @@ public class DMZVoidstoneMOD {
         Set<String> results = new LinkedHashSet<>();
         ClassLoader classLoader = DMZVoidstoneMOD.class.getClassLoader();
 
+        // First try directory URLs. This works in common development environments.
         for (String folder : RESOURCE_FOLDERS) {
             String folderResource = RESOURCE_ROOT + "/" + folder;
             Enumeration<URL> folderUrls = classLoader.getResources(folderResource);
-
             while (folderUrls.hasMoreElements()) {
                 URL folderUrl = folderUrls.nextElement();
 
                 if ("file".equalsIgnoreCase(folderUrl.getProtocol())) {
                     Path folderPath = Path.of(folderUrl.toURI());
-                    try (Stream<Path> paths = Files.walk(folderPath)) {
-                        paths.filter(Files::isRegularFile)
-                                .filter(path -> path.getFileName().toString()
-                                        .toLowerCase(java.util.Locale.ROOT).endsWith(".json"))
-                                .forEach(path -> {
-                                    Path relative = folderPath.relativize(path);
-                                    String resourcePath = folderResource + "/"
-                                            + relative.toString().replace('\\', '/');
-                                    if (isSupportedResource(resourcePath)) {
-                                        results.add(resourcePath);
-                                    }
-                                });
-                    }
+                    addDirectoryResources(folderPath, folderResource, results);
                 } else if ("jar".equalsIgnoreCase(folderUrl.getProtocol())) {
                     JarURLConnection connection = (JarURLConnection) folderUrl.openConnection();
                     connection.setUseCaches(false);
@@ -154,7 +142,6 @@ public class DMZVoidstoneMOD {
                             if (entry.isDirectory()) {
                                 continue;
                             }
-
                             String name = entry.getName();
                             if (name.startsWith(entryPrefix)
                                     && name.toLowerCase(java.util.Locale.ROOT).endsWith(".json")
@@ -164,21 +151,72 @@ public class DMZVoidstoneMOD {
                         }
                     }
                 } else {
-                    LOGGER.warn("Unsupported resource protocol '{}' for {}", folderUrl.getProtocol(), folderUrl);
+                    LOGGER.debug("Unsupported resource protocol '{}' for {}", folderUrl.getProtocol(), folderUrl);
                 }
             }
+        }
 
-            // Some classloaders expose individual resources but not directory URLs.
-            // If no directory URL was available, enumerate JSON resource names that
-            // are known to the classloader via a small fallback for common configs.
-            if (!folderUrls.hasMoreElements() && results.isEmpty()) {
-                LOGGER.debug("No directory URL exposed for resource folder {}", folderResource);
+        // Some packaged JARs omit directory entries, so getResources(folder)
+        // can return nothing even though JSON files exist. Scan the code-source
+        // JAR directly in that case.
+        if (results.isEmpty()) {
+            URL codeSource = DMZVoidstoneMOD.class.getProtectionDomain()
+                    .getCodeSource() == null
+                    ? null
+                    : DMZVoidstoneMOD.class.getProtectionDomain().getCodeSource().getLocation();
+
+            if (codeSource != null && "file".equalsIgnoreCase(codeSource.getProtocol())) {
+                Path sourcePath = Path.of(codeSource.toURI());
+
+                if (Files.isRegularFile(sourcePath)
+                        && sourcePath.getFileName().toString().toLowerCase(java.util.Locale.ROOT).endsWith(".jar")) {
+                    try (JarFile jar = new JarFile(sourcePath.toFile())) {
+                        Enumeration<JarEntry> entries = jar.entries();
+                        while (entries.hasMoreElements()) {
+                            JarEntry entry = entries.nextElement();
+                            if (entry.isDirectory()) {
+                                continue;
+                            }
+                            String name = entry.getName();
+                            if (name.toLowerCase(java.util.Locale.ROOT).endsWith(".json")
+                                    && isSupportedResource(name)) {
+                                results.add(name);
+                            }
+                        }
+                    }
+                } else if (Files.isDirectory(sourcePath)) {
+                    // Gradle development class/resource outputs are commonly siblings.
+                    addDirectoryResources(sourcePath.resolve(RESOURCE_ROOT), RESOURCE_ROOT, results);
+                    Path siblingResources = sourcePath.resolve("../../../resources/main")
+                            .normalize().resolve(RESOURCE_ROOT);
+                    addDirectoryResources(siblingResources, RESOURCE_ROOT, results);
+                }
             }
         }
 
         List<String> sorted = new ArrayList<>(results);
         sorted.sort(String.CASE_INSENSITIVE_ORDER);
         return sorted;
+    }
+
+    private void addDirectoryResources(Path root, String resourcePrefix, Set<String> results)
+            throws IOException {
+        if (!Files.isDirectory(root)) {
+            return;
+        }
+
+        try (Stream<Path> paths = Files.walk(root)) {
+            paths.filter(Files::isRegularFile)
+                    .filter(path -> path.getFileName().toString()
+                            .toLowerCase(java.util.Locale.ROOT).endsWith(".json"))
+                    .forEach(path -> {
+                        String resourcePath = resourcePrefix + "/"
+                                + root.relativize(path).toString().replace('\\\\', '/');
+                        if (isSupportedResource(resourcePath)) {
+                            results.add(resourcePath);
+                        }
+                    });
+        }
     }
 
     private boolean isSupportedResource(String resourcePath) {
