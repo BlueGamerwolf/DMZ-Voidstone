@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.eventbus.api.IEventBus;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -31,6 +32,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.stream.Stream;
 
+import dev.voidstone.dmzvoidstone.registry.ModItems;
+
 @Mod(DMZVoidstoneMOD.MOD_ID)
 public class DMZVoidstoneMOD {
 
@@ -46,6 +49,16 @@ public class DMZVoidstoneMOD {
         // DragonMineZ's configuration. This avoids doing config work in the constructor.
         FMLJavaModLoadingContext.get().getModEventBus()
                 .addListener(this::onLoadComplete);
+
+        
+    IEventBus modEventBus =
+            FMLJavaModLoadingContext.get().getModEventBus();
+
+    ModItems.register(modEventBus);
+
+    // Keep your existing DragonMineZ config loading listener.
+    modEventBus.addListener(this::onLoadComplete);
+
     }
 
     private void onLoadComplete(FMLLoadCompleteEvent event) {
@@ -53,6 +66,7 @@ public class DMZVoidstoneMOD {
         LOGGER.info("Reloading DragonMineZ configs after installing Voidstone configs.");
         ConfigManager.reload();
     }
+
 
     /**
      * Discovers bundled JSON files under resources/dmz-voidstone/classes and
